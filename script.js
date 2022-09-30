@@ -7,20 +7,65 @@ function getComputerChoice() {
 }
 
 const playerSelection = 'Rock'
-const computerSelection = getComputerChoice();
-const result = playRound(playerSelection, computerSelection);
+let computerSelection;
+let result;
+let playerScore = 0;
+let computerScore = 0;
 
-function playRound(playerSelection, computerSelection) {
-    if (playerSelection == computerSelection) return "Its a tie!";
-    else if (playerSelection == 'Rock' && computerSelection == 'Scissors') return 'You win! Rock beats scissors'
-    else if (playerSelection == 'Rock' && computerSelection == 'Paper') return 'You Lose! Paper beats rock'
-    else if (playerSelection == 'Paper' && computerSelection == 'Rock') return 'You Win! Paper beats rock'
-    else if (playerSelection == 'Paper' && computerSelection == 'Paper') return 'You Lose! Paper beats rock'
-    else if (playerSelection == 'Scissors' && computerSelection == 'Paper') return 'You Win! Scissors beats paper'
-    else if (playerSelection == 'Scissors' && computerSelection == 'Rock') return 'You Lose! Rock beats scissors'
+
+game(playerSelection, computerSelection, playerScore);
+
+function playRound(playerSelection, computerSelection) {    
+
+    if (playerSelection === computerSelection) {
+         result = "Its a tie!";
+    }
+    else if (playerSelection == 'Rock' && computerSelection == 'Scissors') {
+        result = 'You win! Rock beats scissors'; 
+        playerScore++;
+    }
+    else if (playerSelection == 'Rock' && computerSelection == 'Paper') {
+       result = 'You Lose! Paper beats rock'
+       computerScore += 1;
+    }
+    else if (playerSelection == 'Paper' && computerSelection == 'Rock') {
+        result = 'You Win! Paper beats rock'
+        playerScore++;
+    }
+    else if (playerSelection == 'Paper' && computerSelection == 'Paper') {
+        result = 'You Lose! Paper beats rock'
+        computerScore += 1;
+    }
+    else if (playerSelection == 'Scissors' && computerSelection == 'Paper') {
+        result = 'You Win! Scissors beats paper'
+        playerScore++;
+    }
+    else if (playerSelection == 'Scissors' && computerSelection == 'Rock') {
+        result = 'You Lose! Rock beats scissors'
+        computerScore += 1;
+    }
+    else {
+        result = "spell it right this time buddy";
+    }
+
 }
 
-console.log("Player: " + playerSelection);
-console.log("computer " + computerSelection);
-console.log(result);
+function game(playerSelection, computerSelection) {
 
+    while(playerScore < 5 && computerScore < 5) {
+        
+        computerSelection = getComputerChoice();
+        playRound(playerSelection, computerSelection);
+        console.log("Playerrrrrz Score : " + playerScore)
+        console.log("Computer Score : " + computerScore)
+        console.log(result);
+        
+    }
+
+console.log("Player: " + playerSelection);
+console.log("computer: " + computerSelection);
+console.log(result);
+console.log("Player Score: " + playerScore)
+console.log("Computer Score: " + computerScore)
+
+}

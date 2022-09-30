@@ -13,7 +13,7 @@ let playerScore = 0;
 let computerScore = 0;
 
 
-game(playerSelection, computerSelection, playerScore);
+game(playerSelection, computerSelection);
 
 function playRound(playerSelection, computerSelection) {    
 

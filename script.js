@@ -1,3 +1,9 @@
+let computerSelection;
+let playerSelection;
+let result;
+let playerScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
     let x = Math.random()*100;
     console.log(x);
@@ -6,11 +12,15 @@ function getComputerChoice() {
     else return 'Scissors';
 }
 
-const playerSelection = 'Rock'
-let computerSelection;
-let result;
-let playerScore = 0;
-let computerScore = 0;
+
+
+playerSelection = getPlayerChoice();
+
+function getPlayerChoice() {
+    return window.prompt("Rock Paper or Scissors?")
+}
+
+
 
 
 game(playerSelection, computerSelection);
@@ -53,8 +63,8 @@ function playRound(playerSelection, computerSelection) {
 function game(playerSelection, computerSelection) {
 
     while(playerScore < 5 && computerScore < 5) {
-        
         computerSelection = getComputerChoice();
+        playerSelection = getPlayerChoice();
         playRound(playerSelection, computerSelection);
         console.log("Playerrrrrz Score : " + playerScore)
         console.log("Computer Score : " + computerScore)

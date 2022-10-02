@@ -12,16 +12,10 @@ function getComputerChoice() {
     else return 'Scissors';
 }
 
-
-
-playerSelection = getPlayerChoice();
-
+computerSelection = getComputerChoice();
 function getPlayerChoice() {
-    return window.prompt("Rock Paper or Scissors?")
+   return window.prompt("Rock Paper or Scissors?")
 }
-
-
-
 
 game(playerSelection, computerSelection);
 
@@ -55,7 +49,7 @@ function playRound(playerSelection, computerSelection) {
         computerScore += 1;
     }
     else {
-        result = "spell it right this time buddy";
+        result = "Spell it right this time buddy";
     }
 
 }
@@ -64,18 +58,12 @@ function game(playerSelection, computerSelection) {
 
     while(playerScore < 5 && computerScore < 5) {
         computerSelection = getComputerChoice();
-        playerSelection = getPlayerChoice();
+        playerSelection = window.prompt("Rock Paper or Scissors")
         playRound(playerSelection, computerSelection);
-        console.log("Playerrrrrz Score : " + playerScore)
+        console.log("Player: " + playerSelection);
+        console.log("Computer: " + computerSelection);
+        console.log("Players Score : " + playerScore)
         console.log("Computer Score : " + computerScore)
         console.log(result);
-        
     }
-
-console.log("Player: " + playerSelection);
-console.log("computer: " + computerSelection);
-console.log(result);
-console.log("Player Score: " + playerScore)
-console.log("Computer Score: " + computerScore)
-
 }

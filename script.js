@@ -1,8 +1,8 @@
 let computerSelection;
 let playerSelection;
 let result;
-let playerScore = 0;
-let computerScore = 0;
+let playerScore = 1;
+let computerScore = 1;
 
 function getComputerChoice() {
     let x = Math.random()*100;
@@ -14,53 +14,88 @@ function getComputerChoice() {
 
 computerSelection = getComputerChoice();
 
-//game(playerSelection, computerSelection);
+rock = document.querySelector('#rock')
+rock.onclick = () => {
+    playerSelection = 'rock';
+    game(playerSelection, computerSelection)
+}
+paper = document.querySelector('#paper')
+paper.onclick = () => {
+    playerSelection = 'paper';
+    game(playerSelection, computerSelection)
+}
+scissors = document.querySelector('#scissors')
+scissors.onclick = () => {
+    playerSelection = 'scissors';
+    game(playerSelection, computerSelection)
+}
+
+
+const playerScoreboard = document.querySelector('#player-score')
+const computerScoreboard =document.querySelector('#computer-score')
+const roundOutcome = document.querySelector('#round-outcome')
 
 function playRound(playerSelection, computerSelection) {    
 
     if (playerSelection === computerSelection) {
-         result = "Its a tie!";
+         roundOutcome.textContent = "Its a tie!";
+
     }
     else if (playerSelection == 'rock' && computerSelection == 'scissors') {
-        result = 'You win! Rock beats scissors'; 
-        playerScore++;
+        roundOutcome.textContent = 'You win! Rock beats Scissors'; 
+        playerScoreboard.textContent = playerScore++;   
+        winCheck(playerScore, computerScore);
+
     }
     else if (playerSelection == 'rock' && computerSelection == 'paper') {
-       result = 'You Lose! Paper beats rock'
-       computerScore += 1;
+        roundOutcome.textContent = 'You Lose! Paper beats Rock'
+       computerScoreboard.textContent = computerScore++;
+       winCheck(playerScore, computerScore);
     }
     else if (playerSelection == 'paper' && computerSelection == 'rock') {
-        result = 'You Win! Paper beats rock'
-        playerScore++;
+        roundOutcome.textContent = 'You Win! Paper beats Rock'
+        playerScoreboard.textContent = playerScore++;
+        winCheck(playerScore, computerScore);
     }
-    else if (playerSelection == 'paper' && computerSelection == 'paper') {
-        result = 'You Lose! Paper beats rock'
-        computerScore += 1;
+    else if (playerSelection == 'paper' && computerSelection == 'scissors') {
+        roundOutcome.textContent = 'You Lose! Scissors beats Paper'
+        computerScoreboard.textContent = computerScore++;
+        winCheck(playerScore, computerScore);
     }
     else if (playerSelection == 'scissors' && computerSelection == 'paper') {
-        result = 'You Win! Scissors beats paper'
-        playerScore++;
+        roundOutcome.textContent = 'You Win! Scissors beats paper'
+        playerScoreboard.textContent = playerScore++;
+        winCheck(playerScore, computerScore);
     }
     else if (playerSelection == 'scissors' && computerSelection == 'rock') {
-        result = 'You Lose! Rock beats scissors'
-        computerScore += 1;
+        roundOutcome.textContent = 'You Lose! Rock beats Scissors'
+        computerScoreboard.textContent = computerScore++;
+        winCheck(playerScore, computerScore);
     }
     else {
-        result = "Spell it right this time buddy";
+        roundOutcome.textContent = "WTF did you do this time?!?!?!?!";
     }
 
 }
 
 function game(playerSelection, computerSelection) {
 
-    while(playerScore < 5 && computerScore < 5) {
         computerSelection = getComputerChoice();
-        //playerSelection = window.prompt("Rock Paper or Scissors")
         playRound(playerSelection, computerSelection);
-        console.log("Player: " + playerSelection);
-        console.log("Computer: " + computerSelection);
-        console.log("Players Score: " + playerScore)
-        console.log("Computer Score: " + computerScore)
-        console.log(result);
-    }
 }
+
+
+function winCheck(playerScore, computerScore) {
+    
+    if (playerScore > 5 || computerScore > 5) {
+        const endGame = document.querySelector('.choice-container')
+        if (playerScore > 5) {
+            endGame.textContent = 'CONGRATULATIONS YOU BEAT MR. ROBOT!!!';
+        } 
+        else {
+            endGame.textContent = 'WHAT THE HECK YOU LOST TO A ROBOT?!?!?!';
+        }
+    }
+    else return;
+}
+

@@ -2,4 +2,4 @@
 
 The Odin Project Rock Paper Scissors Project
 
-Now working on adding a user interface.
+V2 complete. Now Rock Paper Scissors has a user interface

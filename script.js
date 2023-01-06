@@ -32,7 +32,7 @@ scissors.onclick = () => {
 
 
 const playerScoreboard = document.querySelector('#player-score')
-const computerScoreboard =document.querySelector('#computer-score')
+const computerScoreboard = document.querySelector('#computer-score')
 const roundOutcome = document.querySelector('#round-outcome')
 
 function playRound(playerSelection, computerSelection) {    
